@@ -1,14 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brian Kipngetich | Nursing & Tech Portfolio</title>
+  <title>Brian Kipngetich | Professional Portfolio</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,33 +18,42 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
     
-    body {
-      background: #020617;
-      color: #f8fafc;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-    }
+    html { scroll-behavior: smooth; }
+    body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
-    /* Mesh Gradient Background */
+    /* Animated Mesh Background */
     .bg-mesh {
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.4) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.3) 0px, transparent 50%);
+      background: radial-gradient(circle at 50% -20%, #1e3a8a, transparent),
+                  radial-gradient(circle at 0% 100%, #0f172a, transparent);
       background-attachment: fixed;
     }
 
-    /* Glassmorphism Card Style */
+    /* Ultra-Glassmorphism */
     .glass-card {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     }
     .glass-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+      background: rgba(30, 41, 59, 0.5);
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-12px) scale(1.01);
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
     }
+
+    /* Text Gradients */
+    .text-gradient {
+      background: linear-gradient(to right, #60a5fa, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #020617; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
   </style>
 </head>
 <body class="bg-mesh">
@@ -57,82 +68,84 @@
       }, []);
 
       return (
-        <div className="min-h-screen py-10 px-6 max-w-6xl mx-auto space-y-12">
-          
-          {/* HEADER SECTION */}
-          <header className="flex flex-col items-center text-center py-20" data-aos="zoom-in">
-            <div className="relative mb-6">
-               <div className="absolute inset-0 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
-               <img src="https://files.catbox.moe/cy2xcr.jpg" className="relative w-32 h-32 md:w-44 md:h-44 rounded-full border-2 border-blue-500/20 shadow-2xl" alt="Brian" />
+        <div className="relative">
+          {/* NAV BAR */}
+          <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl glass-card rounded-full px-8 py-4 flex justify-between items-center">
+            <div className="text-xl font-black italic tracking-tighter uppercase">BK<span className="text-blue-500">.</span></div>
+            <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+              <a href="#home" className="hover:text-white transition-all">Home</a>
+              <a href="#about" className="hover:text-white transition-all">Identity</a>
+              <a href="#roadmap" className="hover:text-white transition-all">Roadmap</a>
+              <a href="#contact" className="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-full border border-blue-500/30">Connect</a>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 italic">
-              BRIAN <span className="text-blue-500 uppercase">KIPNGETICH</span>
+          </nav>
+
+          {/* HERO SECTION */}
+          <section id="home" className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+            
+            <div data-aos="zoom-out" className="mb-8">
+              <img src="https://files.catbox.moe/cy2xcr.jpg" className="w-40 h-40 md:w-56 md:h-56 rounded-[3rem] object-cover border-4 border-white/5 rotate-3 hover:rotate-0 transition-all duration-700 shadow-2xl" alt="Brian" />
+            </div>
+            
+            <h1 data-aos="fade-up" className="text-6xl md:text-[10rem] font-black tracking-tighter leading-none mb-6">
+              BRIAN <br/> <span className="text-gradient italic">KIPNGETICH</span>
             </h1>
-            <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide max-w-2xl">
-              Nursing Student @ Uzima University | Exploring Health Informatics & AI Automation.
+            
+            <p data-aos="fade-up" data-aos-delay="200" className="max-w-2xl text-slate-400 text-lg md:text-xl font-light tracking-wide italic">
+              "Innovating at the intersection of Clinical Nursing and Health Informatics."
             </p>
           </header>
 
-          {/* BENTO GRID CONTENT */}
-          <div className="grid md:grid-cols-3 gap-6">
-            
-            {/* LARGE ABOUT CARD */}
-            <div className="md:col-span-2 glass-card p-10 rounded-[2.5rem]" data-aos="fade-right">
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 italic">
-                <i className="fa-solid fa-user-doctor text-blue-500"></i> Mission
-              </h2>
-              <p className="text-slate-400 leading-relaxed text-lg">
-                I am bridging the gap between clinical excellence and digital systems. Currently pursuing my Nursing degree while building smart solutions for healthcare documentation and patient monitoring.
-              </p>
-            </div>
-
-            {/* SMALL STAT CARD */}
-            <div className="glass-card p-10 rounded-[2.5rem] flex flex-col justify-between" data-aos="fade-left">
-              <i className="fa-solid fa-code text-4xl text-blue-500"></i>
-              <div>
-                <h3 className="text-xl font-bold italic uppercase">Developer</h3>
-                <p className="text-slate-500 text-sm">Building React & AI Web Apps</p>
+          {/* BENTO GRID IDENTITY SECTION */}
+          <section id="about" className="py-20 px-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+              
+              {/* LARGE BIO CARD */}
+              <div className="md:col-span-2 md:row-span-2 glass-card rounded-[3rem] p-12 flex flex-col justify-end relative overflow-hidden group" data-aos="fade-right">
+                <i className="fa-solid fa-dna absolute top-10 right-10 text-9xl opacity-5 group-hover:rotate-12 transition-transform duration-700"></i>
+                <h2 className="text-4xl font-black mb-6 italic uppercase">The Visionary</h2>
+                <p className="text-slate-400 text-lg leading-relaxed">
+                  Third-year Nursing student at Uzima University, dedicated to revolutionizing patient care through automation. I combine medical expertise with full-stack development to build tools that save time and lives.
+                </p>
               </div>
-            </div>
 
-            {/* SKILLS CARD */}
-            <div className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6" data-aos="fade-up">
-               <h3 className="text-xl font-bold italic uppercase tracking-widest text-blue-400">Core Expertise</h3>
-               <ul className="space-y-4 text-slate-300 font-medium">
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Patient Assessment</li>
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Health Informatics</li>
-                  <li className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Full-Stack Development</li>
-               </ul>
-            </div>
-
-            {/* CONTACT CARD */}
-            <div className="md:col-span-2 glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/10 to-transparent flex flex-col md:flex-row justify-between items-center" data-aos="fade-up">
-              <div className="text-center md:text-left mb-6 md:mb-0">
-                <h2 className="text-3xl font-black italic uppercase tracking-tighter">Let's Collaborate</h2>
-                <p className="text-slate-400 italic">Available for health-tech consultations.</p>
+              {/* STAT CARD 1 */}
+              <div className="glass-card rounded-[3rem] p-10 flex flex-col items-center justify-center text-center" data-aos="fade-down">
+                <div className="text-5xl font-black text-blue-500 mb-2">2025</div>
+                <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Graduation Year</div>
               </div>
-              <div className="flex gap-4">
-                <a href="mailto:brianroticj@gmail.com" className="p-5 bg-blue-600 hover:bg-blue-500 rounded-2xl transition-all shadow-lg active:scale-95">
-                  <i className="fa-solid fa-envelope text-white text-xl"></i>
-                </a>
-                <a href="https://github.com/Bwmxmd254" className="p-5 glass-card rounded-2xl hover:bg-white/5 transition-all active:scale-95">
-                  <i className="fa-brands fa-github text-white text-xl"></i>
-                </a>
+
+              {/* STAT CARD 2 */}
+              <div className="glass-card rounded-[3rem] p-10 flex flex-col items-center justify-center text-center" data-aos="fade-left">
+                <div className="text-5xl font-black text-cyan-400 mb-2">12+</div>
+                <div className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Systems Built</div>
               </div>
+
+              {/* TECH STACK CARD */}
+              <div className="md:col-span-2 glass-card rounded-[3rem] p-12 flex flex-col justify-between overflow-hidden relative" data-aos="fade-up">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-2xl font-black italic uppercase">Tech Stack</h3>
+                  <div className="flex gap-2">
+                    <span className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold">REACT</span>
+                    <span className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold">AI</span>
+                    <span className="px-3 py-1 bg-white/5 rounded-full text-[10px] font-bold">HEALTH-IT</span>
+                  </div>
+                </div>
+                <div className="grid grid-cols-4 gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+                   <i className="fa-brands fa-react text-4xl"></i>
+                   <i className="fa-brands fa-node-js text-4xl"></i>
+                   <i className="fa-brands fa-python text-4xl"></i>
+                   <i className="fa-solid fa-server text-4xl"></i>
+                </div>
+              </div>
+
             </div>
+          </section>
 
-          </div>
-
-          <footer className="text-center py-20 text-slate-600 text-[10px] uppercase tracking-[1em] font-bold">
-            BK © 2025 • PORTFOLIO.BWMXMD.ONLINE
-          </footer>
-
-        </div>
-      );
-    }
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<Portfolio />);
-  </script>
-</body>
-</html>
+          {/* ROADMAP SECTION */}
+          <section id="roadmap" className="py-20 px-6 max-w-5xl mx-auto">
+             <h2 className="text-center text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-20" data-aos="fade-up">Career Roadmap</h2>
+             <div className="space-y-12">
+                {[
+                  {year: "2023", title: "Foundations", desc: "Started clinical rotations at Uz
