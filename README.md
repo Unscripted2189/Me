@@ -1,0 +1,12 @@
+# Brian Kipngetich Portfolio 2025
+
+Professional Healthcare & Health Informatics Portfolio.
+
+## Features
+- **High-End UI:** Glassmorphism and Mesh Gradients.
+- **Responsive:** Optimized for Mobile and Desktop.
+- **Interactive:** Animate-on-Scroll (AOS) and React-powered components.
+
+## Contact
+- **Email:** brianroticj@gmail.com
+- **University:** Uzima University
