@@ -141,29 +141,36 @@ nav a:hover{color:#00c6ff;}
 </main>
 
 <script>
-// PRELOADER LOGIC - ALWAYS FINISHES
+// PRELOADER LOGIC
 window.addEventListener('load', function(){
   setTimeout(function(){
     document.getElementById('preloader').style.display = 'none';
     document.querySelector('main').style.display = 'block';
-
-    // Start muted audio (won't block page)
-    var music = document.getElementById('bg-music');
-    music.volume = 0.2;
-    music.muted = true;
-    music.play().catch(()=>{}); // ignore errors
-  }, 2500); // 2.5 seconds preloader
+  }, 2500);
 });
 
-// PLAY/PAUSE BUTTON LOGIC
+// PLAY/PAUSE BUTTON LOGIC WITH FADE-IN
 const playBtn = document.getElementById('play-btn');
 const music = document.getElementById('bg-music');
 
 playBtn.addEventListener('click', () => {
   if(music.paused){
     music.muted = false;
-    music.volume = 0.2;
-    music.play();
+    music.currentTime = 0; // restart from beginning
+    music.volume = 0;
+    music.play().catch(()=>{});
+
+    // fade-in volume
+    let vol = 0;
+    const fade = setInterval(() => {
+      if(vol < 0.2){
+        vol += 0.01;
+        music.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100); // fade in over ~2 seconds
+
     playBtn.textContent = '🔊 Pause Music';
   } else {
     music.pause();
