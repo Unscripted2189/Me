@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brian Kipngetich | Nursing & Health Tech</title>
+  <title>Brian Kipngetich | Nursing & Tech Portfolio</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,15 +16,14 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
     
-    html { scroll-behavior: smooth; }
-    body { 
-      background-color: #020617; 
-      color: #f8fafc; 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
+    body {
+      background: #020617;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
     }
 
-    /* Professional Mesh Gradient Background */
+    /* Mesh Gradient Background */
     .bg-mesh {
       background-image: 
         radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.4) 0px, transparent 50%),
@@ -33,41 +31,18 @@
       background-attachment: fixed;
     }
 
-    /* Glassmorphism Cards */
+    /* Glassmorphism Card Style */
     .glass-card {
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(24px);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .glass-card:hover {
       border-color: rgba(59, 130, 246, 0.4);
-      transform: translateY(-10px);
-      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
     }
-
-    /* Glowing Profile Halo */
-    .profile-glow {
-      position: relative;
-    }
-    .profile-glow::after {
-      content: '';
-      position: absolute;
-      inset: -10px;
-      background: linear-gradient(45deg, #3b82f6, #06b6d4);
-      border-radius: 50%;
-      filter: blur(20px);
-      opacity: 0.3;
-      z-index: -1;
-      animation: pulse 4s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.05); }
-    }
-
-    .no-scrollbar::-webkit-scrollbar { display: none; }
   </style>
 </head>
 <body class="bg-mesh">
@@ -78,132 +53,78 @@
 
     function Portfolio() {
       useEffect(() => {
-        AOS.init({ duration: 1200, once: false });
+        AOS.init({ duration: 1000, once: false });
       }, []);
 
-      const profileImg = "https://files.catbox.moe/cy2xcr.jpg";
-
       return (
-        <div id="home" className="min-h-screen flex flex-col items-center">
+        <div className="min-h-screen py-10 px-6 max-w-6xl mx-auto space-y-12">
           
-          {/* FLOATING NAVIGATION */}
-          <nav className="fixed top-8 w-[90%] max-w-4xl z-50 px-8 py-4 glass-card rounded-full flex justify-between items-center">
-            <span className="text-xl font-black text-blue-500 tracking-tighter">BK.</span>
-            <div className="flex gap-6 sm:gap-10 text-[10px] sm:text-xs font-black uppercase tracking-widest text-slate-400 no-scrollbar overflow-x-auto whitespace-nowrap px-4">
-              <a href="#home" className="hover:text-blue-400 transition-colors">Home</a>
-              <a href="#about" className="hover:text-blue-400 transition-colors">About</a>
-              <a href="#competencies" className="hover:text-blue-400 transition-colors">Competencies</a>
-              <a href="#contact" className="text-blue-500 font-black border-b border-blue-500/30">Contact</a>
+          {/* HEADER SECTION */}
+          <header className="flex flex-col items-center text-center py-20" data-aos="zoom-in">
+            <div className="relative mb-6">
+               <div className="absolute inset-0 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+               <img src="https://files.catbox.moe/cy2xcr.jpg" className="relative w-32 h-32 md:w-44 md:h-44 rounded-full border-2 border-blue-500/20 shadow-2xl" alt="Brian" />
             </div>
-          </nav>
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4 italic">
+              BRIAN <span className="text-blue-500 uppercase">KIPNGETICH</span>
+            </h1>
+            <p className="text-slate-400 text-lg md:text-xl font-light tracking-wide max-w-2xl">
+              Nursing Student @ Uzima University | Exploring Health Informatics & AI Automation.
+            </p>
+          </header>
 
-          {/* HERO SECTION */}
-          <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center max-w-6xl">
-            <div data-aos="zoom-in" className="profile-glow mb-12">
-              <img src={profileImg} className="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover border-2 border-white/10 shadow-2xl" alt="Brian" />
-            </div>
+          {/* BENTO GRID CONTENT */}
+          <div className="grid md:grid-cols-3 gap-6">
             
-            <div data-aos="fade-up">
-              <h2 className="text-blue-500 font-bold tracking-[0.6em] uppercase text-xs mb-4">Nursing Student • Uzima University</h2>
-              <h1 className="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-none italic">
-                BRIAN <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">KIPNGETICH</span>
-              </h1>
-              <p className="max-w-xl mx-auto text-lg text-slate-400 font-light leading-relaxed mb-12">
-                Specializing in clinical excellence and hospital information systems. Bridging the gap between patient care and digital efficiency.
-              </p>
-
-              <a href="#about" className="inline-flex flex-col items-center gap-4 group">
-                <span className="text-[10px] uppercase tracking-[0.5em] text-slate-500 group-hover:text-blue-400 transition-colors font-bold">Initiate Scroll</span>
-                <div className="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center p-1 group-hover:border-blue-500 transition-colors">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
-                </div>
-              </a>
-            </div>
-          </section>
-
-          {/* BENTO GRID ABOUT */}
-          <section id="about" className="py-32 px-6 max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 glass-card p-12 rounded-[2.5rem] relative overflow-hidden group" data-aos="fade-right">
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                <i className="fa-solid fa-notes-medical text-9xl"></i>
-              </div>
-              <h2 className="text-4xl font-black mb-6 uppercase italic text-white">Clinical Vision</h2>
-              <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                Mastering the art of nursing at Uzima University. My 2025 roadmap is focused on advanced patient assessment and surgical support systems.
+            {/* LARGE ABOUT CARD */}
+            <div className="md:col-span-2 glass-card p-10 rounded-[2.5rem]" data-aos="fade-right">
+              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 italic">
+                <i className="fa-solid fa-user-doctor text-blue-500"></i> Mission
+              </h2>
+              <p className="text-slate-400 leading-relaxed text-lg">
+                I am bridging the gap between clinical excellence and digital systems. Currently pursuing my Nursing degree while building smart solutions for healthcare documentation and patient monitoring.
               </p>
             </div>
 
-            <div className="glass-card p-12 rounded-[2.5rem] border-blue-500/30 flex flex-col justify-between" data-aos="fade-left">
-              <i className="fa-solid fa-microchip text-3xl text-blue-500"></i>
+            {/* SMALL STAT CARD */}
+            <div className="glass-card p-10 rounded-[2.5rem] flex flex-col justify-between" data-aos="fade-left">
+              <i className="fa-solid fa-code text-4xl text-blue-500"></i>
               <div>
-                <h3 className="text-2xl font-black mb-2 text-white">Tech Mindset</h3>
-                <p className="text-slate-400 text-sm italic">Optimizing health outcomes via code and logic.</p>
+                <h3 className="text-xl font-bold italic uppercase">Developer</h3>
+                <p className="text-slate-500 text-sm">Building React & AI Web Apps</p>
               </div>
             </div>
-          </section>
 
-          {/* SKILLS / COMPETENCIES */}
-          <section id="competencies" className="py-32 px-6 w-full">
-            <div className="max-w-5xl mx-auto glass-card p-12 md:p-20 rounded-[3rem]">
-              <div className="mb-20 text-center">
-                <h2 className="text-5xl font-black uppercase tracking-tighter mb-4 italic">Core Proficiency</h2>
-                <div className="h-1.5 w-24 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full"></div>
+            {/* SKILLS CARD */}
+            <div className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6" data-aos="fade-up">
+               <h3 className="text-xl font-bold italic uppercase tracking-widest text-blue-400">Core Expertise</h3>
+               <ul className="space-y-4 text-slate-300 font-medium">
+                  <li className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Patient Assessment</li>
+                  <li className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Health Informatics</li>
+                  <li className="flex items-center gap-2"><div className="w-2 h-2 bg-blue-500 rounded-full"></div> Full-Stack Development</li>
+               </ul>
+            </div>
+
+            {/* CONTACT CARD */}
+            <div className="md:col-span-2 glass-card p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/10 to-transparent flex flex-col md:flex-row justify-between items-center" data-aos="fade-up">
+              <div className="text-center md:text-left mb-6 md:mb-0">
+                <h2 className="text-3xl font-black italic uppercase tracking-tighter">Let's Collaborate</h2>
+                <p className="text-slate-400 italic">Available for health-tech consultations.</p>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-16">
-                <div className="space-y-10" data-aos="fade-up">
-                  {['Clinical Care', 'Emergency Protocol'].map((skill, idx) => (
-                    <div key={idx} className="group">
-                      <div className="flex justify-between mb-3 text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-400 transition-colors">
-                        <span>{skill}</span>
-                        <span>{idx === 0 ? '88%' : '82%'}</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.6)] transition-all duration-1000" style={{ width: idx === 0 ? '88%' : '82%' }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="space-y-10" data-aos="fade-up" data-aos-delay="200">
-                  {['Health Informatics', 'System Maintenance'].map((skill, idx) => (
-                    <div key={idx} className="group">
-                      <div className="flex justify-between mb-3 text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-cyan-400 transition-colors">
-                        <span>{skill}</span>
-                        <span>{idx === 0 ? '90%' : '75%'}</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-all duration-1000" style={{ width: idx === 0 ? '90%' : '75%' }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              <div className="flex gap-4">
+                <a href="mailto:brianroticj@gmail.com" className="p-5 bg-blue-600 hover:bg-blue-500 rounded-2xl transition-all shadow-lg active:scale-95">
+                  <i className="fa-solid fa-envelope text-white text-xl"></i>
+                </a>
+                <a href="https://github.com/Bwmxmd254" className="p-5 glass-card rounded-2xl hover:bg-white/5 transition-all active:scale-95">
+                  <i className="fa-brands fa-github text-white text-xl"></i>
+                </a>
               </div>
             </div>
-          </section>
 
-          {/* CONTACT ACTION BUTTONS */}
-          <section id="contact" className="py-32 px-6 w-full max-w-4xl text-center">
-            <div data-aos="zoom-in" className="glass-card p-16 rounded-[4rem] border-b-8 border-blue-600/50 relative overflow-hidden">
-               <div className="absolute inset-0 bg-blue-600/5 pointer-events-none"></div>
-               <h2 className="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tighter italic">Let's Interface</h2>
-               <p className="text-slate-400 text-lg mb-12 italic">Collaborations, inquiries, or health-tech consultations.</p>
-               
-               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <a href="mailto:brianroticj@gmail.com" 
-                     className="px-12 py-5 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all active:scale-95 flex items-center justify-center gap-3">
-                    <i className="fa-solid fa-envelope"></i> Email Me
-                  </a>
-                  <a href="tel:+25471026" 
-                     className="px-12 py-5 border-2 border-blue-500 text-blue-500 hover:bg-blue-500/10 font-black uppercase tracking-widest rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-3">
-                    <i className="fa-solid fa-phone"></i> Call Me
-                  </a>
-               </div>
-            </div>
-          </section>
+          </div>
 
-          <footer className="py-20 text-[10px] text-slate-600 font-bold uppercase tracking-[1em] text-center">
-             BK © 2025 • Uzima University
+          <footer className="text-center py-20 text-slate-600 text-[10px] uppercase tracking-[1em] font-bold">
+            BK © 2025 • PORTFOLIO.BWMXMD.ONLINE
           </footer>
 
         </div>
