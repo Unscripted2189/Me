@@ -53,6 +53,16 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 nav{position:fixed;top:0;left:0;right:0;background:rgba(0,0,0,0.5);display:flex;justify-content:center;gap:25px;padding:15px;z-index:100;}
 nav a{color:white;font-weight:bold;transition:0.3s;}
 nav a:hover{color:#00c6ff;}
+
+/* PLAY BUTTON */
+#play-btn{
+  position:fixed;bottom:20px;right:20px;
+  background:linear-gradient(90deg,#00c6ff,#0072ff);
+  border:none;color:white;padding:10px 16px;border-radius:50px;
+  cursor:pointer;z-index:1000;font-weight:bold;
+  box-shadow:0 4px 6px rgba(0,0,0,0.3);transition:0.3s;
+}
+#play-btn:hover{transform:scale(1.1);}
 </style>
 </head>
 <body>
@@ -60,91 +70,21 @@ nav a:hover{color:#00c6ff;}
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="circle"></div>
-  <h1>Loading Briand Portfolio...</h1>
+  <h1>BWM XMD.</h1>
   <p>Initializing Portfolio Experience...</p>
 </div>
 
 <!-- MAIN CONTENT -->
 <main>
 <!-- Background Music -->
-<audio id="bg-music" autoplay loop>
+<audio id="bg-music" autoplay loop muted>
   <source src="https://files.catbox.moe/your-soft-music.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
+
+<!-- PLAY/PAUSE BUTTON -->
+<button id="play-btn">🎵 Play Music</button>
 
 <nav>
   <a href="#about">About</a>
   <a href="#education">Education</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<header>
-  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Rotich Profile">
-  <h1>Rotich</h1>
-  <p class="subtitle">Student Nurse | Digital Health & Technology Enthusiast</p>
-  <p>Building a future with innovative healthcare solutions and digital tools.</p>
-  <a href="#skills" class="btn">View My Projects 🚀</a>
-  <div class="tags">
-    <span>Digital Health</span>
-    <span>Patient Care</span>
-    <span>AI & Tech</span>
-    <span>Community Outreach</span>
-    <span>Clinical Skills</span>
-  </div>
-</header>
-
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a motivated student nurse at Uzima University, joined in 2025, passionate about patient-centered care, nursing practice, and digital innovation in healthcare.</p>
-</section>
-
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li><strong>University:</strong> Uzima University</li>
-    <li><strong>Course:</strong> Nursing</li>
-    <li><strong>Year Joined:</strong> 2025</li>
-    <li><strong>Status:</strong> Student Nurse</li>
-  </ul>
-</section>
-
-<section id="skills">
-  <h2>Skills & Digital Passion</h2>
-  <ul>
-    <li>Integrating technology into nursing education and patient care.</li>
-    <li>Using digital tools for research, documentation, and learning.</li>
-    <li>Community health outreach with digital awareness campaigns.</li>
-    <li>Passionate about e-learning and healthcare innovation.</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p><strong>Email:</strong> brianroticj@gmail.com</p>
-  <p><strong>Phone:</strong> +254 710 263 034</p>
-</section>
-
-<footer>© 2025 Rotich | Student Nurse Portfolio</footer>
-</main>
-
-<script>
-// PRELOADER LOGIC - corrected
-window.addEventListener('load', function(){
-  setTimeout(function(){
-    // Hide preloader and show main content
-    document.getElementById('preloader').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
-
-    // Play background music softly, ignore errors
-    var music = document.getElementById('bg-music');
-    music.volume = 0.2;
-    music.play().catch(function(err){
-      console.log('Autoplay blocked:', err);
-    });
-
-  }, 2500); // 2.5 seconds preloader
-});
-</script>
-</body>
-</html>
+  <a href="#
