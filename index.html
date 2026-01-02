@@ -52,6 +52,7 @@ header{
   align-items:center;
   justify-content:center;
   text-align:center;
+  position:relative;
 }
 header img{
   width:160px;height:160px;
@@ -81,19 +82,32 @@ header .btn:hover{transform:scale(1.05);}
 .tags span{background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:0.9rem;transition:0.3s;}
 .tags span:hover{background:#00c6ff;color:#000;cursor:default;}
 
+/* SCROLL DOWN INDICATOR */
+.scroll-down{
+  position:absolute;
+  bottom:25px;
+  font-size:1.8rem;
+  color:#00c6ff;
+  animation:bounce 1.5s infinite;
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(10px);}
+}
+
 /* SECTIONS WITH GLOW */
 section{
   padding:80px 20px;
   max-width:900px;
   margin:40px auto;
   scroll-margin-top:80px;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.2);
-  box-shadow: 0 0 15px rgba(0,198,255,0.6);
-  transition: 0.3s;
+  border-radius:12px;
+  background:rgba(0,0,0,0.2);
+  box-shadow:0 0 15px rgba(0,198,255,0.6);
+  transition:0.3s;
 }
-section:hover {
-  box-shadow: 0 0 30px rgba(0,198,255,0.9);
+section:hover{
+  box-shadow:0 0 30px rgba(0,198,255,0.9);
 }
 section h2{
   font-size:2rem;
@@ -102,7 +116,7 @@ section h2{
   border-bottom:2px solid #00c6ff;
   display:inline-block;
   padding-bottom:5px;
-  text-shadow: 0 0 10px rgba(0,198,255,0.8);
+  text-shadow:0 0 10px rgba(0,198,255,0.8);
 }
 section p, section ul{font-size:1rem;line-height:1.8;margin-bottom:15px;}
 section ul{padding-left:20px;}
@@ -111,22 +125,23 @@ section ul{padding-left:20px;}
 footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 
 /* CONTACT BUTTONS */
-.contact-btn {
-  background: linear-gradient(90deg,#00c6ff,#0072ff);
-  color: white;
-  padding: 12px 25px;
-  border-radius: 25px;
-  font-weight: bold;
-  transition: 0.3s;
-  text-align: center;
-  display: inline-block;
+.contact-btn{
+  background:linear-gradient(90deg,#00c6ff,#0072ff);
+  color:white;
+  padding:12px 25px;
+  border-radius:25px;
+  font-weight:bold;
+  transition:0.3s;
+  text-align:center;
+  display:inline-block;
 }
-.contact-btn:hover {
-  transform: scale(1.05);
-  background: linear-gradient(90deg,#0072ff,#00c6ff);
+.contact-btn:hover{
+  transform:scale(1.05);
+  background:linear-gradient(90deg,#0072ff,#00c6ff);
 }
 </style>
 </head>
+
 <body>
 
 <!-- PRELOADER -->
@@ -151,6 +166,7 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
   <p class="subtitle">Student Nurse | Digital Health & Technology Enthusiast</p>
   <p>Building a future with innovative healthcare solutions and digital tools.</p>
   <a href="#skills" class="btn">View My Projects 🩺✨</a>
+
   <div class="tags">
     <span>Digital Health</span>
     <span>Patient Care</span>
@@ -158,6 +174,9 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
     <span>Community Outreach</span>
     <span>Clinical Skills</span>
   </div>
+
+  <!-- SCROLL INDICATOR -->
+  <a href="#about" class="scroll-down">⬇</a>
 </header>
 
 <section id="about">
@@ -200,15 +219,13 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 </main>
 
 <script>
-// PRELOADER FIX
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(function(){
-    const preloader = document.getElementById('preloader');
-    const main = document.querySelector('main');
-    if(preloader) preloader.style.display = 'none';
-    if(main) main.style.display = 'block';
-  }, 1000); // 1 second preloader
+    document.getElementById('preloader').style.display = 'none';
+    document.querySelector('main').style.display = 'block';
+  }, 1000);
 });
 </script>
+
 </body>
 </html>
