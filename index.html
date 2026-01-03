@@ -8,76 +8,51 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body,html{height:100%;font-family:'Roboto',sans-serif;scroll-behavior:smooth;}
+body,html{font-family:'Roboto',sans-serif;scroll-behavior:smooth;background:#0f2027;color:white;}
 
-body{background:#0f2027;color:white;overflow-x:hidden;}
-a{text-decoration:none;color:white;}
-
-/* ================= PRELOADER ================= */
-#preloader{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:#0f2027;display:flex;flex-direction:column;
-  justify-content:center;align-items:center;z-index:9999;
-}
-#preloader .circle{
-  width:80px;height:80px;border-radius:50%;
-  border:5px solid #00c6ff;border-top-color:transparent;
-  animation:spin 1.5s linear infinite;margin-bottom:20px;
-}
-@keyframes spin{to{transform:rotate(360deg);}}
-main{display:none;}
-
-/* ================= POPUP MODAL ================= */
-#waModal{
+/* ================= TOP POPUP ================= */
+#topPopup{
   position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(6px);
+  top:-100px;
+  left:0;
+  width:100%;
+  background:#111;
+  color:white;
+  padding:12px 15px;
   display:flex;
-  justify-content:center;
   align-items:center;
-  z-index:9998;
+  justify-content:space-between;
+  gap:10px;
+  z-index:9999;
+  box-shadow:0 5px 15px rgba(0,0,0,0.6);
+  transition:0.6s ease;
 }
-.modal-box{
-  background:#0f2027;
-  border-radius:16px;
-  padding:30px;
-  max-width:360px;
-  text-align:center;
-  box-shadow:0 0 30px rgba(0,198,255,0.8);
-  animation:pop 0.4s ease;
-}
-@keyframes pop{from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
-.modal-box h2{color:#00c6ff;margin-bottom:10px;}
-.modal-box p{font-size:0.95rem;margin-bottom:20px;line-height:1.6;}
+#topPopup.show{top:0;}
 
-.wa-btn{
-  display:block;
+#topPopup span{
+  font-size:0.9rem;
+}
+#topPopup a{
   background:#25D366;
   color:#000;
+  padding:6px 14px;
+  border-radius:20px;
   font-weight:bold;
-  padding:14px;
-  border-radius:30px;
-  margin-bottom:15px;
-  transition:0.3s;
+  font-size:0.85rem;
 }
-.wa-btn:hover{transform:scale(1.05);}
-
-#closeModal{
-  display:none;
-  background:none;
-  border:none;
-  color:#aaa;
-  font-size:0.9rem;
+#closeTop{
   cursor:pointer;
+  font-size:1.2rem;
+  color:#aaa;
 }
 
 /* ================= NAV ================= */
 nav{
   position:fixed;top:0;left:0;right:0;
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.6);
   display:flex;justify-content:center;gap:25px;
-  padding:15px;z-index:100;
+  padding:15px;
+  z-index:100;
 }
 nav a:hover{color:#00c6ff;}
 
@@ -91,16 +66,18 @@ header{
   text-align:center;
 }
 header img{
-  width:160px;height:160px;border-radius:50%;
-  border:4px solid #00c6ff;margin-bottom:20px;
-  animation:float 3s ease-in-out infinite;
+  width:160px;height:160px;
+  border-radius:50%;
+  border:4px solid #00c6ff;
+  margin-bottom:20px;
 }
-@keyframes float{50%{transform:translateY(-10px);}}
-
 header .btn{
   background:linear-gradient(90deg,#00c6ff,#0072ff);
-  padding:12px 28px;border-radius:25px;
-  font-weight:bold;margin:8px;display:inline-block;
+  padding:12px 28px;
+  border-radius:25px;
+  font-weight:bold;
+  margin-top:10px;
+  display:inline-block;
 }
 
 /* ================= SECTIONS ================= */
@@ -112,7 +89,7 @@ section{
   border-radius:12px;
   box-shadow:0 0 15px rgba(0,198,255,0.6);
 }
-section h2{color:#00c6ff;margin-bottom:20px;}
+section h2{color:#00c6ff;margin-bottom:15px;}
 
 /* ================= FOOTER ================= */
 footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
@@ -121,30 +98,15 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="circle"></div>
-  <h2>Loading Portfolio...</h2>
+<!-- TOP POPUP -->
+<div id="topPopup">
+  <span>📢 Join my WhatsApp Channel for nursing tips & updates</span>
+  <a href="https://whatsapp.com/channel/0029Vb5Ym5P4o7qKr7MUIa2Z" target="_blank">
+    Join
+  </a>
+  <span id="closeTop">✕</span>
 </div>
 
-<!-- WHATSAPP MODAL -->
-<div id="waModal">
-  <div class="modal-box">
-    <h2>📢 Join My WhatsApp Channel</h2>
-    <p>
-      Get exclusive nursing tips, digital health insights,
-      and student updates — free & spam-free.
-    </p>
-    <a class="wa-btn"
-       href="https://whatsapp.com/channel/0029Vb5Ym5P4o7qKr7MUIa2Z"
-       target="_blank">
-       👉 Join Channel Now
-    </a>
-    <button id="closeModal">Continue to Portfolio</button>
-  </div>
-</div>
-
-<main>
 <nav>
   <a href="#about">About</a>
   <a href="#education">Education</a>
@@ -153,36 +115,44 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 </nav>
 
 <header>
-  <img src="https://files.catbox.moe/iie1ki.jpg">
+  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Profile">
   <h1>💫</h1>
   <p>Hi, I’m Brian Kipngetich</p>
   <p>Student Nurse | Digital Health Enthusiast</p>
   <a href="#skills" class="btn">View My Projects</a>
 </header>
 
-<section id="about"><h2>About Me</h2><p>Student nurse at Uzima University (2025).</p></section>
-<section id="education"><h2>Education</h2><p>Uzima University – Nursing</p></section>
-<section id="skills"><h2>Skills</h2><p>Digital health, community outreach, patient care.</p></section>
-<section id="contact"><h2>Contact</h2><p>Email: brianroticj@gmail.com</p></section>
+<section id="about">
+  <h2>About Me</h2>
+  <p>Motivated student nurse at Uzima University, passionate about digital health.</p>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <p>Uzima University — Nursing (2025)</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <p>Patient care, community outreach, digital health tools.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: brianroticj@gmail.com</p>
+  <p>Phone: +254710263034</p>
+</section>
 
 <footer>© 2025 Brian Kipngetich</footer>
-</main>
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  setTimeout(()=>{
-    preloader.style.display='none';
-    main.style.display='block';
-  },1000);
+setTimeout(()=>{
+  document.getElementById('topPopup').classList.add('show');
+},1200);
 
-  setTimeout(()=>{
-    document.getElementById('closeModal').style.display='block';
-  },7000);
-
-  document.getElementById('closeModal').onclick=()=>{
-    document.getElementById('waModal').style.display='none';
-  };
-});
+document.getElementById('closeTop').onclick=()=>{
+  document.getElementById('topPopup').style.display='none';
+};
 </script>
 
 </body>
