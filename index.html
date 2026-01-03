@@ -8,55 +8,43 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body,html{font-family:'Roboto',sans-serif;scroll-behavior:smooth;background:#0f2027;color:white;}
+body,html{height:100%;font-family:'Roboto',sans-serif;scroll-behavior:smooth;}
 
-/* ================= TOP POPUP ================= */
-#topPopup{
-  position:fixed;
-  top:-100px;
-  left:0;
-  width:100%;
-  background:#111;
-  color:white;
-  padding:12px 15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  z-index:9999;
-  box-shadow:0 5px 15px rgba(0,0,0,0.6);
-  transition:0.6s ease;
-}
-#topPopup.show{top:0;}
+body {background: #0f2027;color:white;overflow-x:hidden;}
+a{text-decoration:none;color:white;}
 
-#topPopup span{
-  font-size:0.9rem;
-}
-#topPopup a{
-  background:#25D366;
-  color:#000;
-  padding:6px 14px;
-  border-radius:20px;
-  font-weight:bold;
-  font-size:0.85rem;
-}
-#closeTop{
-  cursor:pointer;
-  font-size:1.2rem;
-  color:#aaa;
+/* PRELOADER */
+#preloader{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:#0f2027;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;z-index:9999;
 }
 
-/* ================= NAV ================= */
+#preloader .circle{
+  width:80px;height:80px;border-radius:50%;
+  border:5px solid #00c6ff;border-top-color:transparent;
+  animation:spin 1.5s linear infinite;margin-bottom:20px;
+}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+#preloader h1{
+  font-size:2rem;color:#00c6ff;margin-bottom:10px;
+}
+#preloader p{color:white;font-size:1rem;}
+
+main{display:none;}
+
+/* NAVIGATION */
 nav{
   position:fixed;top:0;left:0;right:0;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.5);
   display:flex;justify-content:center;gap:25px;
-  padding:15px;
-  z-index:100;
+  padding:15px;z-index:100;
 }
+nav a{font-weight:bold;transition:0.3s;}
 nav a:hover{color:#00c6ff;}
 
-/* ================= HEADER ================= */
+/* HEADER */
 header{
   height:100vh;
   display:flex;
@@ -70,43 +58,85 @@ header img{
   border-radius:50%;
   border:4px solid #00c6ff;
   margin-bottom:20px;
+  object-fit:cover;
+  animation:float 3s ease-in-out infinite;
 }
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+header h1{font-size:2.5rem;margin-bottom:10px;}
+header p.subtitle{color:#00c6ff;margin-bottom:10px;font-size:1.2rem;}
+
 header .btn{
   background:linear-gradient(90deg,#00c6ff,#0072ff);
   padding:12px 28px;
   border-radius:25px;
   font-weight:bold;
-  margin-top:10px;
+  transition:0.3s;
   display:inline-block;
+  margin-top:10px;
 }
+header .btn:hover{transform:scale(1.05);}
 
-/* ================= SECTIONS ================= */
+.tags{margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+.tags span{background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:0.9rem;transition:0.3s;}
+.tags span:hover{background:#00c6ff;color:#000;cursor:default;}
+
+/* SECTIONS WITH GLOW */
 section{
   padding:80px 20px;
   max-width:900px;
   margin:40px auto;
-  background:rgba(0,0,0,0.2);
-  border-radius:12px;
-  box-shadow:0 0 15px rgba(0,198,255,0.6);
+  scroll-margin-top:80px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,198,255,0.6);
+  transition: 0.3s;
 }
-section h2{color:#00c6ff;margin-bottom:15px;}
+section:hover {
+  box-shadow: 0 0 30px rgba(0,198,255,0.9);
+}
+section h2{
+  font-size:2rem;
+  margin-bottom:20px;
+  color:#00c6ff;
+  border-bottom:2px solid #00c6ff;
+  display:inline-block;
+  padding-bottom:5px;
+  text-shadow: 0 0 10px rgba(0,198,255,0.8);
+}
+section p, section ul{font-size:1rem;line-height:1.8;margin-bottom:15px;}
+section ul{padding-left:20px;}
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
+
+/* CONTACT BUTTONS */
+.contact-btn {
+  background: linear-gradient(90deg,#00c6ff,#0072ff);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+  text-align: center;
+  display: inline-block;
+}
+.contact-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg,#0072ff,#00c6ff);
+}
 </style>
 </head>
-
 <body>
 
-<!-- TOP POPUP -->
-<div id="topPopup">
-  <span>📢 Join my WhatsApp Channel for nursing tips & updates</span>
-  <a href="https://whatsapp.com/channel/0029Vb5Ym5P4o7qKr7MUIa2Z" target="_blank">
-    Join
-  </a>
-  <span id="closeTop">✕</span>
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="circle"></div>
+  <h1>Loading Brian's Portfolio...</h1>
+  <p>Initializing Portfolio Experience...</p>
 </div>
 
+<main>
 <nav>
   <a href="#about">About</a>
   <a href="#education">Education</a>
@@ -115,45 +145,70 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 </nav>
 
 <header>
-  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Profile">
+  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Rotich Profile">
   <h1>💫</h1>
-  <p>Hi, I’m Brian Kipngetich</p>
-  <p>Student Nurse | Digital Health Enthusiast</p>
-  <a href="#skills" class="btn">View My Projects</a>
+  <p class="subtitle">Hi, I’m Brian Kipngetich</p>
+  <p class="subtitle">Student Nurse | Digital Health & Technology Enthusiast</p>
+  <p>Building a future with innovative healthcare solutions and digital tools.</p>
+  <a href="#skills" class="btn">View My Projects 🩺✨</a>
+  <div class="tags">
+    <span>Digital Health</span>
+    <span>Patient Care</span>
+    <span>AI & Tech</span>
+    <span>Community Outreach</span>
+    <span>Clinical Skills</span>
+  </div>
 </header>
 
 <section id="about">
   <h2>About Me</h2>
-  <p>Motivated student nurse at Uzima University, passionate about digital health.</p>
+  <p>I am a motivated student nurse at Uzima University, joined in 2025, passionate about patient-centered care, nursing practice, and digital innovation in healthcare.</p>
 </section>
 
 <section id="education">
   <h2>Education</h2>
-  <p>Uzima University — Nursing (2025)</p>
+  <ul>
+    <li><strong>University:</strong> Uzima University</li>
+    <li><strong>Course:</strong> Nursing</li>
+    <li><strong>Year Joined:</strong> 2025</li>
+    <li><strong>Status:</strong> Student Nurse</li>
+  </ul>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
-  <p>Patient care, community outreach, digital health tools.</p>
+  <h2>Skills & Digital Passion</h2>
+  <ul>
+    <li>Integrating technology into nursing education and patient care.</li>
+    <li>Using digital tools for research, documentation, and learning.</li>
+    <li>Community health outreach with digital awareness campaigns.</li>
+    <li>Passionate about e-learning and healthcare innovation.</li>
+  </ul>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: brianroticj@gmail.com</p>
-  <p>Phone: +254710263034</p>
+  <p><strong>Email:</strong> brianroticj@gmail.com</p>
+  <p><strong>Phone:</strong> +254710263034</p>
+
+  <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
+    <a href="mailto:brianroticj@gmail.com" class="contact-btn">📧 Email Me</a>
+    <a href="tel:+254710263034" class="contact-btn">📞 Call Me</a>
+  </div>
 </section>
 
-<footer>© 2025 Brian Kipngetich</footer>
+<footer>© 2025 Brian Kipngetich | Student Nurse Portfolio</footer>
+</main>
 
 <script>
-setTimeout(()=>{
-  document.getElementById('topPopup').classList.add('show');
-},1200);
-
-document.getElementById('closeTop').onclick=()=>{
-  document.getElementById('topPopup').style.display='none';
-};
+// PRELOADER FIX
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    const preloader = document.getElementById('preloader');
+    const main = document.querySelector('main');
+    if(preloader) preloader.style.display = 'none';
+    if(main) main.style.display = 'block';
+  }, 1000); // 1 second preloader
+});
 </script>
-
 </body>
 </html>
