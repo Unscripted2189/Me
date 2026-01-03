@@ -10,41 +10,78 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body,html{height:100%;font-family:'Roboto',sans-serif;scroll-behavior:smooth;}
 
-body {background: #0f2027;color:white;overflow-x:hidden;}
+body{background:#0f2027;color:white;overflow-x:hidden;}
 a{text-decoration:none;color:white;}
 
-/* PRELOADER */
+/* ================= PRELOADER ================= */
 #preloader{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:#0f2027;display:flex;flex-direction:column;
   justify-content:center;align-items:center;z-index:9999;
 }
-
 #preloader .circle{
   width:80px;height:80px;border-radius:50%;
   border:5px solid #00c6ff;border-top-color:transparent;
   animation:spin 1.5s linear infinite;margin-bottom:20px;
 }
-@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-
-#preloader h1{
-  font-size:2rem;color:#00c6ff;margin-bottom:10px;
-}
-#preloader p{color:white;font-size:1rem;}
-
+@keyframes spin{to{transform:rotate(360deg);}}
 main{display:none;}
 
-/* NAVIGATION */
+/* ================= POPUP MODAL ================= */
+#waModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(6px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9998;
+}
+.modal-box{
+  background:#0f2027;
+  border-radius:16px;
+  padding:30px;
+  max-width:360px;
+  text-align:center;
+  box-shadow:0 0 30px rgba(0,198,255,0.8);
+  animation:pop 0.4s ease;
+}
+@keyframes pop{from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+.modal-box h2{color:#00c6ff;margin-bottom:10px;}
+.modal-box p{font-size:0.95rem;margin-bottom:20px;line-height:1.6;}
+
+.wa-btn{
+  display:block;
+  background:#25D366;
+  color:#000;
+  font-weight:bold;
+  padding:14px;
+  border-radius:30px;
+  margin-bottom:15px;
+  transition:0.3s;
+}
+.wa-btn:hover{transform:scale(1.05);}
+
+#closeModal{
+  display:none;
+  background:none;
+  border:none;
+  color:#aaa;
+  font-size:0.9rem;
+  cursor:pointer;
+}
+
+/* ================= NAV ================= */
 nav{
   position:fixed;top:0;left:0;right:0;
   background:rgba(0,0,0,0.5);
   display:flex;justify-content:center;gap:25px;
   padding:15px;z-index:100;
 }
-nav a{font-weight:bold;transition:0.3s;}
 nav a:hover{color:#00c6ff;}
 
-/* HEADER */
+/* ================= HEADER ================= */
 header{
   height:100vh;
   display:flex;
@@ -54,86 +91,31 @@ header{
   text-align:center;
 }
 header img{
-  width:160px;height:160px;
-  border-radius:50%;
-  border:4px solid #00c6ff;
-  margin-bottom:20px;
-  object-fit:cover;
+  width:160px;height:160px;border-radius:50%;
+  border:4px solid #00c6ff;margin-bottom:20px;
   animation:float 3s ease-in-out infinite;
 }
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-
-header h1{font-size:2.5rem;margin-bottom:10px;}
-header p.subtitle{color:#00c6ff;margin-bottom:10px;font-size:1.2rem;}
+@keyframes float{50%{transform:translateY(-10px);}}
 
 header .btn{
   background:linear-gradient(90deg,#00c6ff,#0072ff);
-  padding:12px 28px;
-  border-radius:25px;
-  font-weight:bold;
-  transition:0.3s;
-  display:inline-block;
-  margin:8px;
+  padding:12px 28px;border-radius:25px;
+  font-weight:bold;margin:8px;display:inline-block;
 }
-header .btn:hover{transform:scale(1.05);}
 
-.tags{margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
-.tags span{background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:0.9rem;transition:0.3s;}
-.tags span:hover{background:#00c6ff;color:#000;cursor:default;}
-
-/* SECTIONS WITH GLOW */
+/* ================= SECTIONS ================= */
 section{
   padding:80px 20px;
   max-width:900px;
   margin:40px auto;
-  scroll-margin-top:80px;
-  border-radius:12px;
   background:rgba(0,0,0,0.2);
+  border-radius:12px;
   box-shadow:0 0 15px rgba(0,198,255,0.6);
-  transition:0.3s;
 }
-section:hover{
-  box-shadow:0 0 30px rgba(0,198,255,0.9);
-}
-section h2{
-  font-size:2rem;
-  margin-bottom:20px;
-  color:#00c6ff;
-  border-bottom:2px solid #00c6ff;
-  display:inline-block;
-  padding-bottom:5px;
-  text-shadow:0 0 10px rgba(0,198,255,0.8);
-}
-section p, section ul{
-  font-size:1rem;
-  line-height:1.8;
-  margin-bottom:15px;
-}
-section ul{padding-left:20px;}
+section h2{color:#00c6ff;margin-bottom:20px;}
 
-/* CONTACT BUTTONS */
-.contact-btn{
-  background:linear-gradient(90deg,#00c6ff,#0072ff);
-  color:white;
-  padding:12px 25px;
-  border-radius:25px;
-  font-weight:bold;
-  transition:0.3s;
-  text-align:center;
-  display:inline-block;
-}
-.contact-btn:hover{
-  transform:scale(1.05);
-  background:linear-gradient(90deg,#0072ff,#00c6ff);
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  background:#111;
-  color:#00c6ff;
-}
+/* ================= FOOTER ================= */
+footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 </style>
 </head>
 
@@ -142,12 +124,27 @@ footer{
 <!-- PRELOADER -->
 <div id="preloader">
   <div class="circle"></div>
-  <h1>Loading Brian's Portfolio...</h1>
-  <p>Initializing Portfolio Experience...</p>
+  <h2>Loading Portfolio...</h2>
+</div>
+
+<!-- WHATSAPP MODAL -->
+<div id="waModal">
+  <div class="modal-box">
+    <h2>📢 Join My WhatsApp Channel</h2>
+    <p>
+      Get exclusive nursing tips, digital health insights,
+      and student updates — free & spam-free.
+    </p>
+    <a class="wa-btn"
+       href="https://whatsapp.com/channel/0029Vb5Ym5P4o7qKr7MUIa2Z"
+       target="_blank">
+       👉 Join Channel Now
+    </a>
+    <button id="closeModal">Continue to Portfolio</button>
+  </div>
 </div>
 
 <main>
-
 <nav>
   <a href="#about">About</a>
   <a href="#education">Education</a>
@@ -156,89 +153,35 @@ footer{
 </nav>
 
 <header>
-  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Rotich Profile">
+  <img src="https://files.catbox.moe/iie1ki.jpg">
   <h1>💫</h1>
-  <p class="subtitle">Hi, I’m Brian Kipngetich</p>
-  <p class="subtitle">Student Nurse | Digital Health & Technology Enthusiast</p>
-  <p>Building a future with innovative healthcare solutions and digital tools.</p>
-
-  <a href="#skills" class="btn">View My Projects 🩺✨</a>
-
-  <!-- WhatsApp Channel Button -->
-  <a href="https://whatsapp.com/channel/0029Vb5Ym5P4o7qKr7MUIa2Z"
-     class="btn"
-     target="_blank"
-     rel="noopener">
-     💬 Join My WhatsApp Channel
-  </a>
-
-  <div class="tags">
-    <span>Digital Health</span>
-    <span>Patient Care</span>
-    <span>AI & Tech</span>
-    <span>Community Outreach</span>
-    <span>Clinical Skills</span>
-  </div>
+  <p>Hi, I’m Brian Kipngetich</p>
+  <p>Student Nurse | Digital Health Enthusiast</p>
+  <a href="#skills" class="btn">View My Projects</a>
 </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am a motivated student nurse at Uzima University, joined in 2025,
-    passionate about patient-centered care, nursing practice,
-    and digital innovation in healthcare.
-  </p>
-</section>
+<section id="about"><h2>About Me</h2><p>Student nurse at Uzima University (2025).</p></section>
+<section id="education"><h2>Education</h2><p>Uzima University – Nursing</p></section>
+<section id="skills"><h2>Skills</h2><p>Digital health, community outreach, patient care.</p></section>
+<section id="contact"><h2>Contact</h2><p>Email: brianroticj@gmail.com</p></section>
 
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li><strong>University:</strong> Uzima University</li>
-    <li><strong>Course:</strong> Nursing</li>
-    <li><strong>Year Joined:</strong> 2025</li>
-    <li><strong>Status:</strong> Student Nurse</li>
-  </ul>
-</section>
-
-<section id="skills">
-  <h2>Skills & Digital Passion</h2>
-  <ul>
-    <li>Integrating technology into nursing education and patient care.</li>
-    <li>Using digital tools for research, documentation, and learning.</li>
-    <li>Community health outreach with digital awareness campaigns.</li>
-    <li>Passionate about e-learning and healthcare innovation.</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p><strong>Email:</strong> brianroticj@gmail.com</p>
-  <p><strong>Phone:</strong> +254710263034</p>
-
-  <div style="margin-top:20px; display:flex; gap:15px; flex-wrap:wrap; justify-content:center;">
-    <a href="mailto:brianroticj@gmail.com" class="contact-btn">📧 Email Me</a>
-    <a href="tel:+254710263034" class="contact-btn">📞 Call Me</a>
-
-    <!-- WhatsApp Channel Button -->
-    <a href="https://whatsapp.com/channel/0029Vb5Ym5P4o7qKr7MUIa2Z"
-       class="contact-btn"
-       target="_blank"
-       rel="noopener">
-       💬 Join My WhatsApp Channel
-    </a>
-  </div>
-</section>
-
-<footer>© 2025 Brian Kipngetich | Student Nurse Portfolio</footer>
-
+<footer>© 2025 Brian Kipngetich</footer>
 </main>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-  setTimeout(function(){
-    document.getElementById('preloader').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
-  }, 1000);
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    preloader.style.display='none';
+    main.style.display='block';
+  },1000);
+
+  setTimeout(()=>{
+    document.getElementById('closeModal').style.display='block';
+  },7000);
+
+  document.getElementById('closeModal').onclick=()=>{
+    document.getElementById('waModal').style.display='none';
+  };
 });
 </script>
 
