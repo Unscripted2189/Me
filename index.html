@@ -53,7 +53,7 @@ header{
   justify-content:center;
   text-align:center;
 }
-header img{
+header img.profile{
   width:160px;height:160px;
   border-radius:50%;
   border:4px solid #00c6ff;
@@ -63,7 +63,7 @@ header img{
 }
 @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
 
-header h1{font-size:2.5rem;margin-bottom:10px;}
+header h1{margin-bottom:10px;}
 header p.subtitle{color:#00c6ff;margin-bottom:10px;font-size:1.2rem;}
 
 header .btn{
@@ -145,12 +145,31 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 </nav>
 
 <header>
-  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Rotich Profile">
-  <h1>💫</h1>
-  <p class="subtitle">Hi, I’m Brian Kipngetich</p>
+  <img src="https://files.catbox.moe/iie1ki.jpg" alt="Rotich Profile" class="profile">
+
+  <!-- TYPING SVG NAME -->
+  <h1>
+    <img
+      src="https://readme-typing-svg.demolab.com?
+font=Roboto
+&size=36
+&duration=3000
+&pause=1000
+&color=00C6FF
+&center=true
+&vCenter=true
+&width=420
+&lines=Brian+Kipngetich"
+      alt="Brian Kipngetich"
+      style="filter: drop-shadow(0 0 12px #00c6ff);"
+    />
+  </h1>
+
   <p class="subtitle">Student Nurse | Digital Health & Technology Enthusiast</p>
   <p>Building a future with innovative healthcare solutions and digital tools.</p>
+
   <a href="#skills" class="btn">View My Projects 🩺✨</a>
+
   <div class="tags">
     <span>Digital Health</span>
     <span>Patient Care</span>
@@ -207,8 +226,9 @@ document.addEventListener('DOMContentLoaded', function(){
     const main = document.querySelector('main');
     if(preloader) preloader.style.display = 'none';
     if(main) main.style.display = 'block';
-  }, 1000); // 1 second preloader
+  }, 1000);
 });
 </script>
+
 </body>
 </html>
