@@ -19,19 +19,14 @@ a{text-decoration:none;color:white;}
   background:#0f2027;display:flex;flex-direction:column;
   justify-content:center;align-items:center;z-index:9999;
 }
-
 #preloader .circle{
   width:80px;height:80px;border-radius:50%;
   border:5px solid #00c6ff;border-top-color:transparent;
   animation:spin 1.5s linear infinite;margin-bottom:20px;
 }
 @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-
-#preloader h1{
-  font-size:2rem;color:#00c6ff;margin-bottom:10px;
-}
+#preloader h1{font-size:2rem;color:#00c6ff;margin-bottom:10px;}
 #preloader p{color:white;font-size:1rem;}
-
 main{display:none;transition:opacity 0.5s ease;opacity:0;}
 
 /* NAVIGATION */
@@ -83,29 +78,25 @@ header .btn:hover{transform:scale(1.05);}
 .tags span{background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:20px;font-size:0.9rem;transition:0.3s;}
 .tags span:hover{background:#00c6ff;color:#000;cursor:default;}
 
-/* SOCIAL ICON BUTTONS */
-.social-buttons{
-  position:absolute;
-  top:20px;
-  right:20px;
+/* SOCIAL BUTTONS WITH HANDLES */
+.social-handles{
   display:flex;
-  gap:10px;
-  z-index:10;
-}
-.social-buttons a{
-  background: linear-gradient(90deg,#00c6ff,#0072ff);
-  color:#fff;
-  padding:10px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
+  gap:15px;
+  margin-top:15px;
+  flex-wrap:wrap;
   justify-content:center;
-  font-size:18px;
+}
+.social-handles a{
+  background:linear-gradient(90deg,#00c6ff,#0072ff);
+  color:white;
+  padding:8px 16px;
+  border-radius:25px;
+  font-weight:bold;
   transition:0.3s;
 }
-.social-buttons a:hover{
+.social-handles a:hover{
   filter: drop-shadow(0 0 12px #00c6ff);
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 /* SCROLL DOWN INDICATOR */
@@ -124,7 +115,6 @@ header .btn:hover{transform:scale(1.05);}
   cursor:pointer;
   animation:glowScroll 1.5s infinite;
 }
-
 .scroll-down span {
   display:block;
   width:6px;
@@ -134,13 +124,11 @@ header .btn:hover{transform:scale(1.05);}
   margin-top:5px;
   animation:scrollDot 1.5s infinite;
 }
-
 @keyframes scrollDot {
   0% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(15px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
-
 @keyframes glowScroll {
   0%,100% { box-shadow: 0 0 10px #00c6ff; }
   50% { box-shadow: 0 0 25px #00c6ff; }
@@ -192,8 +180,6 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 }
 </style>
 
-<!-- FONT AWESOME FOR SOCIAL ICONS -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -213,16 +199,6 @@ footer{text-align:center;padding:20px;background:#111;color:#00c6ff;}
 </nav>
 
 <header>
-  <!-- CLICKABLE SOCIAL BUTTONS -->
-  <div class="social-buttons">
-    <a href="https://www.instagram.com/13r_1an/" target="_blank" title="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://x.com/Brian0544754335" target="_blank" title="X (Twitter)">
-      <i class="fab fa-x-twitter"></i>
-    </a>
-  </div>
-
   <img src="https://files.catbox.moe/iie1ki.jpg" alt="Rotich Profile" class="profile">
 
   <!-- TYPING SVG NAME -->
@@ -245,6 +221,12 @@ font=Roboto
 
   <p class="subtitle">Student Nurse | Digital Health & Technology Enthusiast</p>
   <p>Building a future with innovative healthcare solutions and digital tools.</p>
+
+  <!-- SOCIAL BUTTONS WITH HANDLES -->
+  <div class="social-handles">
+    <a href="https://www.instagram.com/13r_1an/" target="_blank">@13r_1an (Instagram)</a>
+    <a href="https://x.com/Brian0544754335" target="_blank">@Brian0544754335 (X)</a>
+  </div>
 
   <a href="#skills" class="btn">View My Projects 🩺✨</a>
 
@@ -302,7 +284,7 @@ font=Roboto
 </main>
 
 <script>
-// FIXED PRELOADER
+// PRELOADER FIX
 window.addEventListener('load', function(){
   const preloader = document.getElementById('preloader');
   const main = document.querySelector('main');
@@ -315,4 +297,4 @@ window.addEventListener('load', function(){
 </script>
 
 </body>
-  </html>
+</html>
